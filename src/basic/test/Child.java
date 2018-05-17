@@ -8,8 +8,9 @@ class RootMan{
         System.out.println("super");
     }
     //和小孩玩游戏
-    public void playChildGame(Child child){
+    public Child playChildGame(Child child){
         System.out.println("super_game_child");
+        return null;
     }
     //获取药量
     public Parent getDrug(RootMan parent){
@@ -35,6 +36,10 @@ abstract class Parent extends  RootMan{
         System.out.println("parent_"+this.getClass());
         return null;
     }
+    public Child talkParaSmall(Child parent){
+        System.out.println("test_child"+this.getClass());
+        return null;
+    }
 }
 public class Child extends Parent {
     Child(){
@@ -46,14 +51,15 @@ public class Child extends Parent {
         System.out.println("test_child:1片药");
         return null;
     }
-    //@Override 不是重写加此标识会报错 本类族句柄都可以
-    public Child talkParaSmall(RootMan parent){
+    //@Override
+    public Parent talkParaSmall(RootMan parent){
         System.out.println("test_child"+this.getClass());
         return null;
     }
     //对小孩来说，大人就是父母  不是重写
-    public void playChildGame(Parent parent){
+    public RootMan playChildGame(Parent parent){
         System.out.println("test_child");
+        return null;
     }
     @Override//真正的重写 返回参数虽不同但也算是 返回结果不能扩大
     public Child talk(Parent parent){
